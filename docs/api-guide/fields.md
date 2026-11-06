@@ -37,6 +37,8 @@ Defaults to `False`
 Normally an error will be raised if a field is not supplied during deserialization.
 Set to false if this field is not required to be present during deserialization.
 
+During partial updates (`partial=True`), the `required` check is skipped for omitted fields. Values that are supplied are still validated according to the field's other options, including `allow_null` and, for string fields, `allow_blank`.
+
 Setting this to `False` also allows the object attribute or dictionary key to be omitted from output when serializing the instance. If the key is not present it will simply not be included in the output representation.
 
 Defaults to `True`. If you're using [Model Serializer](https://www.django-rest-framework.org/api-guide/serializers/#modelserializer), the default value will be `False` when you have specified a `default`, or when the corresponding `Model` field has `blank=True` or `null=True` and is not part of a unique constraint at the same time. (Note that without a `default` value, [unique constraints will cause the field to be required](https://www.django-rest-framework.org/api-guide/validators/#optional-fields).)
